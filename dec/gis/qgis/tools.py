@@ -34,10 +34,10 @@ class Tools():
     _dataDrive1 = None
     _dataDrive2 = None
     _showDefaultMapDialogue = True
-    dataPath = "\\GIS1-Corporate\\Data\\"
+    dataPath = "\\YMAC-DC3-FS1\\Spatial_Data\\"
     lastID = 0
     #applicationName = "QGIS Tools"
-    applicationName = "DPaW Tools"
+    applicationName = "YMAC Tools"
     releaseDate = "31/05/2015"
     versionNumber = "2.0"
     QGISApp = None
@@ -346,14 +346,14 @@ Settings - Options... - CRS - Enable 'on the fly' reprojection by default.
     def getSetting(name, default=None):
         settings = QSettings()
         # settings.beginGroup("DEC")
-        return str(settings.value("DEC/" + name, default))
+        return str(settings.value("YMAC/" + name, default))
         # settings.endGroup()
 
 ################################
     @staticmethod
     def setSetting(name, value):
         settings = QSettings()
-        settings.setValue("DEC/" + name, value)
+        settings.setValue("YMAC/" + name, value)
 
 ####################
     @staticmethod
@@ -500,7 +500,7 @@ Settings - Options... - CRS - Enable 'on the fly' reprojection by default.
     def log(message):
         return
         message = str(message)
-        location = "E:/temp/QGISTOOLSLOG.txt"
+        location = "C:/temp/QGISTOOLSLOG.txt"
         try:
             with open(location, "a") as myfile:
                 myfile.write(str(datetime.now())+"\t"+message + "\r\n")

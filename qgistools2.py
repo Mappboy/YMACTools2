@@ -142,7 +142,7 @@ class QGISTools2:
         # Create action that will start plugin configuration
         self.action = QAction(
             QIcon(":/plugins/qgistools2/DPAW.png"),
-            u"DPAW Tools for QGIS v 2.x", self.iface.mainWindow())
+            u"YMAC Tools for QGIS v 2.x", self.iface.mainWindow())
         # connect the action to the run method
         self.action.triggered.connect(self.run)
 
