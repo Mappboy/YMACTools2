@@ -1,7 +1,7 @@
 #/***************************************************************************
-# QGISTools2
+# YMACTools2
 #
-# DPAW Tools for QGIS v 2.x
+# YMAC Tools for QGIS v 2.x
 #                             -------------------
 #        begin                : 2014-08-15
 #        copyright            : (C) 2014 by GIS Apps, Dept of Parks and Wildlife
@@ -25,19 +25,19 @@ QGISDIR=.qgis2
 # Makefile for a PyQGIS plugin
 
 # translation
-SOURCES = qgistools2.py ui_qgistools2.py __init__.py qgistools2dialog.py
+SOURCES = ymactools2.py ui_ymactools2.py __init__.py ymactools2dialog.py
 #TRANSLATIONS = i18n/qgistools2_en.ts
-TRANSLATIONS =
+TRANSLATIONS = il8n
 
 # global
 
-PLUGINNAME = qgistools2
+PLUGINNAME = ymactools2
 
-PY_FILES = qgistools2.py qgistools2dialog.py __init__.py
+PY_FILES = ymactools2.py ymactools2dialog.py __init__.py
 
 EXTRAS = icon.png metadata.txt
 
-UI_FILES = ui_qgistools2.py
+UI_FILES = ui_ymactools2.py
 
 RESOURCE_FILES = resources_rc.py
 

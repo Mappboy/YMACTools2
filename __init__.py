@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- QGISTools2
+ YMACTools2
                                  A QGIS plugin
- DPAW Tools for QGIS v 2.x
+ YMAC Tools for QGIS v 2.x
                              -------------------
         begin                : 2014-08-15
         copyright            : (C) 2014 by GIS Apps, Dept of Parks and Wildlife
@@ -23,5 +23,5 @@
 
 def classFactory(iface):
     # load QGISTools2 class from file QGISTools2
-    from qgistools2 import QGISTools2
-    return QGISTools2(iface)
+    from ymactools2 import YMACTools2
+    return YMACTools2(iface)

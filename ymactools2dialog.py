@@ -21,7 +21,7 @@
 """
 
 from PyQt4 import QtCore, QtGui
-from ui_qgistools2 import Ui_YMACTools2
+from ui_ymactools2 import Ui_YMACTools2
 # create the dialog
 
 

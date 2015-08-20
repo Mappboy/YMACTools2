@@ -55,16 +55,16 @@ class Tools():
     WMSinCDDP = []
     corporateDataDrive = "External"     # Normally this will be overwritten on starting QGIS, with the V: drive address
 
-    iconApp = QIcon(":/plugins/ymactools2/YMAC.png")
-    iconFolder = QIcon(":/plugins/ymactools2/folder.png")
-    iconGlobe = QIcon(":/plugins/ymactools2/globe.png")
-    iconPrinter = QIcon(":/plugins/ymactools2/printer.png")
-    iconPageSetup = QIcon(":/plugins/ymactools2/page_white_gear.png")
-    iconMapPro = QIcon(":/plugins/ymactools2/map_edit.png")
-    iconMapCog = QIcon(":/plugins/ymactools2/map_cog.png")
-    iconMapLabel = QIcon(":/plugins/ymactools2/map_edit.png")
-    iconZoomLocation = QIcon(":/plugins/ymactools2/binocs.png")
-    iconRefresh = QIcon(":/plugins/ymactools2/refresh.png")
+    iconApp = QIcon(":/plugins/ymactools2/resources/icons/YMAC.png")
+    iconFolder = QIcon(":/plugins/ymactools2/resources/icons/folder.png")
+    iconGlobe = QIcon(":/plugins/ymactools2/resources/icons/globe.png")
+    iconPrinter = QIcon(":/plugins/ymactools2/resources/icons/printer.png")
+    iconPageSetup = QIcon(":/plugins/ymactools2/resources/icons/page_white_gear.png")
+    iconMapPro = QIcon(":/plugins/ymactools2/resources/icons/map_edit.png")
+    iconMapCog = QIcon(":/plugins/ymactools2/resources/icons/map_cog.png")
+    iconMapLabel = QIcon(":/plugins/ymactools2/resources/icons/map_edit.png")
+    iconZoomLocation = QIcon(":/plugins/ymactools2/resources/icons/binocs.png")
+    iconRefresh = QIcon(":/plugins/ymactools2/resources/icons/refresh.png")
     startTime = None
     stopTime = None
 

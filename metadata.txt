@@ -43,12 +43,12 @@ tags=
 
 homepage=
 
-http://intranet/giscentre/default.aspx
+http://ymac-dc3-app1/
 tracker=
 
 repository=
 
-icon=resources/icons/DPAW.png
+icon=resources/icons/YMAC.png
 
 # experimental flag
 

@@ -489,18 +489,17 @@ class MapProduction(QObject):
                 legend = item
 
         if len(maps) == 2:
-            global mainMap
             if maps[0].boundingRect().width() > maps[1].boundingRect().width():
                 mainMap = maps[0]
                 localityMap = maps[1]
             else:
                 mainMap = maps[1]
                 localityMap = maps[0]
-
+            global mainMap
 
         elif len(maps) > 0:
-            global mainMap
-            mainMap = maps[0]
+                mainMap = maps[0]
+                global mainMap
         else:
             Tools.debug("There is no map in this composer; map production tool will be closed.")
             return
@@ -614,9 +613,9 @@ class MapProduction(QObject):
 
         # reallocate picture source
         for image in images:
-            pictureFile = str(image.picturePAth()).rsplit("\\", 1)[-1].rsplit("/", 1)[-1]
+            pictureFile = str(image.pictureFile()).rsplit("\\", 1)[-1].rsplit("/", 1)[-1]
             pictureLocation = Tools.getPluginPath() + "resources\\logos\\" + pictureFile
-            image.setPicturePath(pictureLocation)
+            image.setPictureFile(pictureLocation)
 
         # UPDATE SCALE BARS, LOCALITY MAP AND GRID(S)
         # First get CRS of canvas and determine if it is projected or geographic
