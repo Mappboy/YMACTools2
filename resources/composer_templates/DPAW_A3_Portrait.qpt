@@ -55,7 +55,7 @@
         <geographicflag>true</geographicflag>
     </spatialrefsys>
    </ComposerMapGrid>
- 
+
    <!--Main Map > Easting-Northing Grid-->
    <ComposerMapGrid name="East-North Grid" gridStyle="0" intervalX="100000" intervalY="100000" showAnnotation="1" annotationFormat="3" annotationPrecision="0" annotationFont="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0" annotationFontColor="0,0,255,255" bottomAnnotationDirection="0" bottomAnnotationPosition="1" rightAnnotationDirection="1" rightAnnotationPosition="1" topAnnotationDirection="0" topAnnotationPosition="1" leftAnnotationDirection="1" leftAnnotationPosition="1" blendMode="0" show="1" offsetX="0" offsetY="0" frameAnnotationDistance="1.5" unit="0" uuid="{79b123ab-4dd9-47b9-b5d7-f5288c1493af}" crossLength="1.5">
     <lineStyle>
@@ -80,7 +80,7 @@
      </symbol>
     </lineStyle>
    </ComposerMapGrid>
-   
+
    <!--Main Map > Composer Item-->
    <ComposerItem pagey="24" page="1" id="Main Map" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="10.88608" y="24" visibility="1" zValue="1" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="274" outlineWidth="0.3" excludeFromExports="0" uuid="{98f1a70b-748b-4171-b6c0-503f2fe2ec71}" height="338.609" itemRotation="0" frame="true" pagex="10.88608">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
@@ -227,12 +227,12 @@
   </ComposerLabel>
 
 <!--Department Logo-->
-  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="43.3" file="DPAW_rgb.jpg" pictureHeight="10.43" mapId="-1" anchorPoint="4">
+  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="43.3" file="ymac_logo.jpg" pictureHeight="10.43" mapId="-1" anchorPoint="4">
    <ComposerItem pagey="384" page="1" id="Department Logo" lastValidViewScaleFactor="-1" positionMode="4" positionLock="false" x="230" y="384" visibility="1" zValue="4" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="49.551" outlineWidth="0.3" excludeFromExports="0" uuid="{7912c7c3-8a0c-4dd8-9db8-1532562cab77}" height="10.425" itemRotation="0" frame="false" pagex="230">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerPicture>
-  
+
   </Composition>
 </Composer>

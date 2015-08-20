@@ -15,7 +15,7 @@
     <prop k="style" v="solid"/>
    </layer>
   </symbol>
-  
+
 <!--Main Map-->
   <ComposerMap mapRotation="0" keepLayerSet="false" id="0" previewMode="Render" drawCanvasItems="true">
    <Extent ymin="5999740" xmin="-1031940" ymax="8490806.19960887543857098" xmax="2048060"/>
@@ -55,7 +55,7 @@
         <geographicflag>true</geographicflag>
     </spatialrefsys>
    </ComposerMapGrid>
- 
+
    <!--Main Map > Easting-Northing Grid-->
    <ComposerMapGrid name="East-North Grid" gridStyle="0" intervalX="100000" intervalY="100000" showAnnotation="1" annotationFormat="3" annotationPrecision="0" annotationFont="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0" annotationFontColor="0,0,255,255" bottomAnnotationDirection="0" bottomAnnotationPosition="1" rightAnnotationDirection="1" rightAnnotationPosition="1" topAnnotationDirection="0" topAnnotationPosition="1" leftAnnotationDirection="1" leftAnnotationPosition="1" blendMode="0" show="1" offsetX="0" offsetY="0" frameAnnotationDistance="1.5" unit="0" uuid="{79b123ab-4dd9-47b9-b5d7-f5288c1493af}" crossLength="1.5">
     <lineStyle>
@@ -80,14 +80,14 @@
      </symbol>
     </lineStyle>
    </ComposerMapGrid>
-   
+
    <!--Main Map > ComposerItem-->
    <ComposerItem pagey="10.6593" page="1" id="Main Map" lastValidViewScaleFactor="1.88197" positionMode="0" positionLock="false" x="13.1368" y="10.6593" visibility="1" zValue="2" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="320.476" outlineWidth="0.3" excludeFromExports="0" uuid="{291d89cd-8711-413d-9c3e-9eb81aa2eb6c}" height="263.444" itemRotation="0" frame="true" pagex="13.1368">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerMap>
-  
+
 <!--Overview Map-->
   <ComposerMap mapRotation="0" keepLayerSet="false" id="1" previewMode="Render" drawCanvasItems="true">
    <Extent ymin="7245269.99245980475097895" xmin="508056.66666666668606922" ymax="7245276.65912647172808647" xmax="508063.33333333337213844"/>
@@ -115,7 +115,7 @@
     <BackgroundColor alpha="255" red="193" blue="255" green="232"/>
    </ComposerItem>
   </ComposerMap>
-  
+
 <!--Legend-->
   <ComposerLegend symbolWidth="3" title="Legend" boxSpace="2" splitLayer="0" equalColumnWidth="1" map="0" titleAlignment="4" symbolHeight="3" wmsLegendHeight="6" wrapChar="" fontColor="#000000" columnSpace="1" wmsLegendWidth="25" columnCount="1">
    <styles>
@@ -133,8 +133,8 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLegend>
-  
-<!--North Arrow-->  
+
+<!--North Arrow-->
   <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="5.15939" file="./arcgis_north_arrow.png" pictureHeight="13.2292" mapId="-1" anchorPoint="1">
    <ComposerItem pagey="146.365" page="1" id="North Arrow" lastValidViewScaleFactor="-1" positionMode="1" positionLock="false" x="374.222" y="146.365" visibility="1" zValue="14" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="5.55625" outlineWidth="0.3" excludeFromExports="0" uuid="{b1e308d6-8c83-4687-bff2-7a2030c7adb6}" height="13.2292" itemRotation="0" frame="false" pagex="374.222">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
@@ -167,7 +167,7 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerScaleBar>
-  
+
 <!--Page Size Label-->
   <ComposerLabel valign="32" labelText="(A3)" htmlState="0" halign="4" margin="0">
    <LabelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
@@ -187,7 +187,7 @@
     <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
-  
+
 <!--Projection Info-->
   <ComposerLabel valign="32" labelText="Projection: %PROJ%&#xa;Datum: %DATUM%" htmlState="0" halign="4" margin="1">
    <LabelFont description="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0"/>
@@ -207,7 +207,7 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
-  
+
 <!--Produced by-->
   <ComposerLabel valign="128" labelText="Produced by %A%, &#xa;%DEPT%" htmlState="0" halign="4" margin="1">
    <LabelFont description="MS Shell Dlg 2,7,-1,5,50,0,0,0,0,0"/>
@@ -217,7 +217,7 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
-    
+
 <!--Disclaimer-->
   <ComposerLabel valign="32" labelText="The %DEPT% does not guarantee that this map is without flaw of any kind and disclaims all liability for any errors, loss or other consequence which may arise from relying on any information depicted.  Roads and tracks on land managed by %DA% may contain unmarked hazards and their surface condition is variable.  Exercise caution and drive to conditions on all roads." htmlState="0" halign="4" margin="1">
    <LabelFont description="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0"/>
@@ -229,7 +229,7 @@
   </ComposerLabel>
 
 <!--Department Logo-->
-  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="47.2653" file="DPAW_rgb.jpg" pictureHeight="11.3744" mapId="-1" anchorPoint="4">
+  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="47.2653" file="ymac_logo.jpg" pictureHeight="11.3744" mapId="-1" anchorPoint="4">
    <ComposerItem pagey="248.269" page="1" id="Department Logo" lastValidViewScaleFactor="2.07126" positionMode="1" positionLock="false" x="353.368" y="248.269" visibility="1" zValue="5" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="47.2653" outlineWidth="0.3" excludeFromExports="0" uuid="{141b1e36-9f7d-4c12-a491-be0042b87b15}" height="16.9444" itemRotation="0" frame="false" pagex="353.368">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>

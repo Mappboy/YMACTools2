@@ -55,7 +55,7 @@
         <geographicflag>true</geographicflag>
     </spatialrefsys>
    </ComposerMapGrid>
- 
+
    <!--Main Map > Easting-Northing Grid-->
    <ComposerMapGrid name="East-North Grid" gridStyle="0" intervalX="100000" intervalY="100000" showAnnotation="1" annotationFormat="3" annotationPrecision="0" annotationFont="MS Shell Dlg 2,7,-1,5,50,0,0,0,0,0" annotationFontColor="0,0,255,255" bottomAnnotationDirection="0" bottomAnnotationPosition="1" rightAnnotationDirection="1" rightAnnotationPosition="1" topAnnotationDirection="0" topAnnotationPosition="1" leftAnnotationDirection="1" leftAnnotationPosition="1" blendMode="0" show="1" offsetX="0" offsetY="0" frameAnnotationDistance="1.5" unit="0" uuid="{79b123ab-4dd9-47b9-b5d7-f5288c1493af}" crossLength="1.5">
     <lineStyle>
@@ -80,7 +80,7 @@
      </symbol>
     </lineStyle>
    </ComposerMapGrid>
-   
+
    <!--Main Map > Composer Item-->
    <ComposerItem pagey="22.3633" page="1" id="Main Map" lastValidViewScaleFactor="1.30313" positionMode="0" positionLock="false" x="14.2845" y="22.3633" visibility="1" zValue="1" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="392.34" outlineWidth="1.3" excludeFromExports="0" uuid="{54a724c3-c1f1-4a3e-a9d9-25aed1d54bd7}" height="504.869" itemRotation="0" frame="true" pagex="14.2845">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
@@ -196,7 +196,7 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
- 
+
 <!--Job Ref and Production Time Label-->
   <ComposerLabel valign="32" labelText="Job Ref:  %J%&#xa;Produced at %TIME% on %D%" htmlState="0" halign="4" margin="1">
    <LabelFont description="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0"/>
@@ -216,7 +216,7 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
-  
+
 <!--Disclaimer-->
   <ComposerLabel valign="32" labelText="The %DEPT% does not guarantee that this map is without flaw of any kind and disclaims all liability for any errors, loss or other consequence which may arise from relying on any information depicted.  Roads and tracks on land managed by %DA% may contain unmarked hazards and their surface condition is variable.  Exercise caution and drive to conditions on all roads." htmlState="0" halign="4" margin="1">
    <LabelFont description="MS Shell Dlg 2,7,-1,5,50,0,0,0,0,0"/>
@@ -228,13 +228,13 @@
   </ComposerLabel>
 
 <!--Department Logo-->
-  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="61.5563" file="DPAW_rgb.jpg" pictureHeight="14.8135" mapId="-1" anchorPoint="4">
+  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="61.5563" file="ymac_logo.jpg" pictureHeight="14.8135" mapId="-1" anchorPoint="4">
    <ComposerItem pagey="549" page="1" id="Department Logo" lastValidViewScaleFactor="9.32232" positionMode="1" positionLock="false" x="339.478" y="549" visibility="1" zValue="4" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="61.5563" outlineWidth="0.3" excludeFromExports="0" uuid="{8cbcaf21-d1b0-4b32-b2d8-4918ec7224a7}" height="17.2808" itemRotation="0" frame="false" pagex="339.478">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
     <dataDefinedSource expr="" field="" active="false" useExpr="true"/>
    </ComposerItem>
   </ComposerPicture>
-  
+
  </Composition>
 </Composer>

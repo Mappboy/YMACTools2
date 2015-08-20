@@ -43,6 +43,9 @@ class MapLabelDialog(QDialog):
         self.result = self.exec_()
 
     def setupDialog(self):
+        """
+        Creates a dialog box which performs initial setting up
+        """
         self.setMinimumWidth(380)
         self.setWindowTitle("Map Production")
         mainLayout = QVBoxLayout()
@@ -404,7 +407,7 @@ class MapLabelDialog(QDialog):
 
 class MapProduction(QObject):
     _QGISVersion = float(qgis.core.QGis.QGIS_VERSION[:3])
-    qgisTools2Folder = os.path.join(os.path.dirname(__file__), ("../../../.."))
+    ymacTools2Folder = os.path.join(os.path.dirname(__file__), ("../../../.."))
     xMin = None
     xMax = None
     yMin = None
@@ -429,7 +432,7 @@ class MapProduction(QObject):
         acro = dlg._acro
 
         # create composer from template (based on user-specified page size and orientation)
-        template = os.path.normpath(self.qgisTools2Folder) + r"/resources/composer_templates/" + templateFilename
+        template = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/" + templateFilename
         templateFile = file(template, 'rt')
         templateContent = templateFile.read()
         templateFile.close()
@@ -517,6 +520,7 @@ class MapProduction(QObject):
         legend.setLegendFilterByMapEnabled(True)
 
         # zoom to map canvas extent when composer map is initially created
+        #TODO This is not working
         canvas = qgis.utils.iface.mapCanvas()
         extent = canvas.extent()
         xMin = canvas.extent().xMinimum()
@@ -652,6 +656,7 @@ class MapProduction(QObject):
         progressMsg.setWindowTitle("Step 2 of 2 - may take a minute")
         progressMsg.setText("Displaying final composer - may take a minute if you have WMS or imagery layers")
         cv.composerWindow().findChild(QAction, "mActionZoomAll").trigger()
+        #TODO: Not sure if this is correct
         mainMap.setPreviewMode(QgsComposerMap.Render)
         mainMap.updateItem()
         if localityMap is not None and locMapReqd == True:
@@ -708,8 +713,8 @@ class MapProduction(QObject):
 
 
             # State boundary - no labels required
-            stateBoundary = LoadShapefile.loadShapefile(r"\Hydrography\State\WA_coast_smoothed.shp", "__LAYER1")
-            stateBoundaryQml = os.path.normpath(self.qgisTools2Folder) + r"/resources/composer_templates/wa_inset_style.qml"
+            stateBoundary = LoadShapefile.loadShapefile(r"\TemplateData\WA_Outline.shp", "__LAYER1")
+            stateBoundaryQml = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/wa_inset_style.qml"
             stateBoundary.loadNamedStyle(stateBoundaryQml)
             if stateBoundary is not None:
                 QgsMapLayerRegistry.instance().addMapLayer(stateBoundary)
@@ -717,28 +722,32 @@ class MapProduction(QObject):
                 dataLegend.setLayerVisible(stateBoundary, False)
 
             # regions layer with labels
-            regions = LoadShapefile.loadShapefile(r"\Administration_Boundaries\State\dec_regions.shp", "__LAYER2")
-            if regions is not None:
-                QgsMapLayerRegistry.instance().addMapLayer(regions)
-                dataLegend.moveLayer(regions, localityLayers)
-                dataLegend.setLayerVisible(regions, False)
-                palyr = QgsPalLayerSettings()
-                palyr.readFromLayer(regions)
-                palyr.enabled = True
-                palyr.fieldName = 'REGION'
-                palyr.writeToLayer(regions)
+            towns = LoadShapefile.loadShapefile(r"\TemplateData\OverviewTowns.shp", "__LAYER2")
+            if towns is not None:
+                QgsMapLayerRegistry.instance().addMapLayer(towns)
+                dataLegend.moveLayer(towns, localityLayers)
+                dataLegend.setLayerVisible(towns, False)
+                #palyr = QgsPalLayerSettings()
+                #palyr.readFromLayer(towns)
+                #palyr.enabled = True
+                #palyr.fieldName = 'Name'
+                #palyr.writeToLayer(towns)
+                townsQml = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/towns_style.qml"
+                towns.loadNamedStyle(townsQml)
 
-            # LGA layer with labels
-            lgas = LoadShapefile.loadShapefile(r"\Administration_Boundaries\State\local_gov_authority.shp", "__LAYER3")
+            #LGA layer with labels
+            #TODO: MAYBE we should add smaller localaties or something
+            # It's just going to be easier to actually find appropriate data sets for these
+            lgas = LoadShapefile.loadShapefile(r"\NonCustodial\Admin\AdminAreas\LGA.shp", "__LAYER3")
             if lgas is not None:
                 QgsMapLayerRegistry.instance().addMapLayer(lgas)
                 dataLegend.moveLayer(lgas, localityLayers)
                 dataLegend.setLayerVisible(lgas, False)
-                lgaQml = os.path.normpath(self.qgisTools2Folder) + r"/resources/composer_templates/lga_style.qml"
+                lgaQml = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/lga_style.qml"
                 lgas.loadNamedStyle(lgaQml)
 
             # Localities layer with labels
-            localities = LoadShapefile.loadShapefile(r"\Administration_Boundaries\State\locality_boundary.shp", "__LAYER4")
+            localities = LoadShapefile.loadShapefile(r"\NonCustodial\Admin\AdminAreas\PostalLocality.shp", "__LAYER4")
             if localities is not None:
                 QgsMapLayerRegistry.instance().addMapLayer(localities)
                 dataLegend.moveLayer(localities, localityLayers)
@@ -746,13 +755,13 @@ class MapProduction(QObject):
                 palyr = QgsPalLayerSettings()
                 palyr.readFromLayer(localities)
                 palyr.enabled = True
-                palyr.fieldName = 'LOC_NAME'
+                palyr.fieldName = 'NAME'
                 palyr.writeToLayer(localities)
 
         # Centroid layer - always added even if locality layers have alread been created (centroid may be in different place)
         if centroidLayer is not None:
             QgsMapLayerRegistry.instance().addMapLayer(centroidLayer)
-            centroidQml = os.path.normpath(self.qgisTools2Folder) + r"/resources/composer_templates/centroid_marker.qml"
+            centroidQml = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/centroid_marker.qml"
             centroidLayer.loadNamedStyle(centroidQml)
             groups = qgis.utils.iface.legendInterface().groups()
             for group in groups:
@@ -810,7 +819,6 @@ class MapProduction(QObject):
         xMax = self.xMax
         yMin = self.yMin
         yMax = self.yMax
-
 
         # SET INITIAL EXTENT OF LOCALITY MAP, AND AREA COVERED BY IT.
         # Initial extent is full extent of locality layers plus a 20% buffer.
@@ -874,7 +882,7 @@ class MapProduction(QObject):
             elif locMapArea <= 5*10**9:
                 visibleLayers = ["__LAYER1", "__LAYER3"]    # WA boundary + LGAs
             else:
-                visibleLayers = ["__LAYER1", "__LAYER2"]    # WA boundary + DPAW Regions
+                visibleLayers = ["__LAYER1", "__LAYER2"]    # WA boundary + DPAW towns
         else:
             if locMapArea <= 5*10**8:
                 visibleLayers = ["__LAYER1", "__LAYER4"]    # WA boundary + localities
@@ -894,6 +902,7 @@ class MapProduction(QObject):
         localityMap.setKeepLayerSet(True)
 
         # RESIZE LOCALITY MAP IF NOT ENOUGH CONTEXT (I.E. TOO FEW BORDERS BETWEEN REGIONS / LGAS / LOCALITIES ARE DISPLAYED
+        #TODO: Currently not using any of this
         request = QgsFeatureRequest()
         for layer in layers:
             if layer.name() == "__LAYER2":  # Reset region labels

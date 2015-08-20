@@ -14,14 +14,14 @@
 
 
 [general]
-name=QGIS Tools 2
+name=YMAC Tools 2
 
 qgisMinimumVersion=2.0
 
-description=DPAW Tools for QGIS v 2.x
+description=YMAC Tools for QGIS v 2.x
 
 version=0.12
-author=GIS Apps, Dept of Parks and Wildlife
+author=Cameron Poole, Based on DPaw
 
 email=Patrick.Maslen@dpaw.wa.gov.au
 

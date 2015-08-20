@@ -15,7 +15,7 @@
     <prop k="style" v="solid"/>
    </layer>
   </symbol>
-  
+
 <!--Main Map-->
   <ComposerMap mapRotation="0" keepLayerSet="true" id="0" previewMode="Render" drawCanvasItems="true">
    <Extent ymin="6282923.83937849570065737" xmin="399629.09398772398708388" ymax="6499297.25500323716551065" xmax="589629.09418152400758117"/>
@@ -55,7 +55,7 @@
      <geographicflag>true</geographicflag>
     </spatialrefsys>
    </ComposerMapGrid>
-   
+
    <!--Main Map > Easting-Northing Grid-->
    <ComposerMapGrid leftAnnotationDirection="1" annotationFont="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0" gridFramePenThickness="0.29999999999999999" showAnnotation="1" bottomAnnotationDirection="0" bottomAnnotationPosition="1" name="East-North Grid" gridStyle="0" intervalX="50000" intervalY="50000" gridFrameStyle="0" rightAnnotationPosition="1" topAnnotationDirection="0" leftAnnotationPosition="1" blendMode="0" show="1" frameFillColor1="255,255,255,255" gridFrameWidth="2" frameFillColor2="0,0,0,255" annotationFontColor="0,0,255,255" gridFrameSideFlags="15" gridFramePenColor="0,0,0,255" offsetX="0" annotationPrecision="0" offsetY="0" frameAnnotationDistance="1.5" unit="0" uuid="{79b123ab-4dd9-47b9-b5d7-f5288c1493af}" topAnnotationPosition="1" rightAnnotationDirection="1" annotationFormat="3" crossLength="1.5">
     <lineStyle>
@@ -168,7 +168,7 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerScaleBar>
-  
+
 <!--Page Size Label-->
   <ComposerLabel valign="32" marginX="0" marginY="0" labelText="(A5)" htmlState="0" halign="4">
    <LabelFont description="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0"/>
@@ -188,7 +188,7 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
- 
+
 <!--Produced By label-->
   <ComposerLabel valign="128" labelText="Produced by %A%, &#xa;%DEPT%" htmlState="0" halign="4" margin="1">
    <LabelFont description="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0"/>
@@ -230,7 +230,7 @@
   </ComposerLabel>
 
 <!--Department Logo-->
-  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="31.6735" file="DPAW_rgb.jpg" pictureHeight="7.6222" mapId="-1" anchorPoint="4">
+  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="31.6735" file="ymac_logo.jpg" pictureHeight="7.6222" mapId="-1" anchorPoint="4">
    <ComposerItem pagey="183.249" page="1" id="Department Logo" lastValidViewScaleFactor="2.63354" positionMode="1" positionLock="false" x="102.372" y="183.249" visibility="1" zValue="4" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="37.38" outlineWidth="0.3" excludeFromExports="0" uuid="{59e7d94e-40ad-4860-99ba-f568428db2c8}" height="8.326" itemRotation="0" frame="false" pagex="102.372">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>

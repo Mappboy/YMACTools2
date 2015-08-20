@@ -55,7 +55,7 @@
         <geographicflag>true</geographicflag>
     </spatialrefsys>
    </ComposerMapGrid>
- 
+
    <!--Main Map > Easting-Northing Grid-->
    <ComposerMapGrid name="East-North Grid" gridStyle="0" intervalX="100000" intervalY="100000" showAnnotation="1" annotationFormat="3" annotationPrecision="0" annotationFont="MS Shell Dlg 2,7,-1,5,50,0,0,0,0,0" annotationFontColor="0,0,255,255" bottomAnnotationDirection="0" bottomAnnotationPosition="1" rightAnnotationDirection="1" rightAnnotationPosition="1" topAnnotationDirection="0" topAnnotationPosition="1" leftAnnotationDirection="1" leftAnnotationPosition="1" blendMode="0" show="1" offsetX="0" offsetY="0" frameAnnotationDistance="1.5" unit="0" uuid="{79b123ab-4dd9-47b9-b5d7-f5288c1493af}" crossLength="1.5">
     <lineStyle>
@@ -80,7 +80,7 @@
      </symbol>
     </lineStyle>
    </ComposerMapGrid>
-   
+
    <!--Main Map > Composer Item-->
    <ComposerItem pagey="25.7213" page="1" id="Main Map" lastValidViewScaleFactor="0.652489" positionMode="0" positionLock="false" x="22.0344" y="25.7213" visibility="1" zValue="1" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="974.016" outlineWidth="1.3" excludeFromExports="0" uuid="{dc205c3d-3a5c-4e7f-86c4-6a9952d216d5}" height="763.607" itemRotation="0" frame="true" pagex="22.0344">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
@@ -229,7 +229,7 @@
   </ComposerLabel>
 
 <!--Department Logo-->
-  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="79.4538" file="DPAW_rgb.jpg" pictureHeight="19.1205" mapId="-1" anchorPoint="4">
+  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="79.4538" file="ymac_logo.jpg" pictureHeight="19.1205" mapId="-1" anchorPoint="4">
    <ComposerItem pagey="745.302" page="1" id="Department Logo" lastValidViewScaleFactor="0.600656" positionMode="1" positionLock="false" x="1053.27" y="745.302" visibility="1" zValue="3" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="79.4538" outlineWidth="0.3" excludeFromExports="0" uuid="{f6dff369-d9cc-489b-86e2-5aca0e76c34b}" height="21.611" itemRotation="0" frame="false" pagex="1053.27">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>

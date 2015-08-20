@@ -20,25 +20,20 @@ import string
 class Tools():
     net_manager = QNetworkAccessManager()
     isNewProject = True
-    regions = ["Goldfields",
-               "Kimberley",
-               "Midwest",
-               "Pilbara",
-               "South_Coast",
-               "South_West",
-               "Swan",
-               "Warren",
-               "Wheatbelt"]
+    regions = ["Yamatji",
+               "Pilbara"]
     errorList = ""
     _region = None
-    _dataDrive1 = None
-    _dataDrive2 = None
+    _dataDrive1 = ""
+    _dataDrive2 = ""
     _showDefaultMapDialogue = True
-    dataPath = "\\YMAC-DC3-FS1\\Spatial_Data\\"
+    corpMenuLocation = '\\' # sets data directory folder to root
+    menuFileName = "..\\..\\QGIS_tools_menu.xml"
+    dataPath = ""
     lastID = 0
     #applicationName = "QGIS Tools"
     applicationName = "YMAC Tools"
-    releaseDate = "31/05/2015"
+    releaseDate = "12/08/2015"
     versionNumber = "2.0"
     QGISApp = None
     dataMenuDict = dict({"null": 0})
@@ -46,10 +41,11 @@ class Tools():
     dockableWidgetManager = None
     _pluginPath = ""
     composers = []
-    localLogFolder = r"C:\ProgramData\DEC\GIS"
+    localLogFolder = r"C:\ProgramData\YMAC\GIS"
     localLogFilename = r"\cddp.log"
     localWMSLogFilename = r"\wms.log"
-    centralLogFolder = os.path.abspath(r"\\kens-samba-005\Layer_Counter")
+    #TODO: Change this
+    centralLogFolder = os.path.abspath(r"\\YMAC-DC3-FS1\General\SpatialLogs\\YMACTools.log")
     machineName = platform.node()
     username = getpass.getuser()
     cddpTechnique = "manual"    # Default for counter method
@@ -59,7 +55,7 @@ class Tools():
     WMSinCDDP = []
     corporateDataDrive = "External"     # Normally this will be overwritten on starting QGIS, with the V: drive address
 
-    iconApp = QIcon(":/plugins/qgistools2/DPAW.png")
+    iconApp = QIcon(":/plugins/qgistools2/YMAC.png")
     iconFolder = QIcon(":/plugins/qgistools2/folder.png")
     iconGlobe = QIcon(":/plugins/qgistools2/globe.png")
     iconPrinter = QIcon(":/plugins/qgistools2/printer.png")
@@ -455,7 +451,7 @@ Settings - Options... - CRS - Enable 'on the fly' reprojection by default.
 
         # check program files
         pluginPath = (QFileInfo(QgsApplication.pluginPath()).path() +
-                      "/python/plugins/QGISTools2/")
+                      "/python/plugins/YMACTools2/")
         pluginFile = QFile(pluginPath)
         if pluginFile.exists():
             Tools._pluginDir = pluginPath
@@ -463,7 +459,7 @@ Settings - Options... - CRS - Enable 'on the fly' reprojection by default.
 
         # check user directory
         pluginPath = (QFileInfo(QgsApplication.qgisUserDbFilePath()).path() +
-                      "python/plugins/QGISTools2/")
+                      "python/plugins/YMACTools2/")
         pluginFile = QFile(pluginPath)
         if pluginFile.exists():
             Tools._pluginDir = pluginPath

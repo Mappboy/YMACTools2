@@ -55,7 +55,7 @@
         <geographicflag>true</geographicflag>
     </spatialrefsys>
    </ComposerMapGrid>
- 
+
    <!--Main Map > Easting-Northing Grid-->
    <ComposerMapGrid name="East-North Grid" gridStyle="0" intervalX="100000" intervalY="100000" showAnnotation="1" annotationFormat="3" annotationPrecision="0" annotationFont="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0" annotationFontColor="0,0,255,255" bottomAnnotationDirection="0" bottomAnnotationPosition="1" rightAnnotationDirection="1" rightAnnotationPosition="1" topAnnotationDirection="0" topAnnotationPosition="1" leftAnnotationDirection="1" leftAnnotationPosition="1" blendMode="0" show="1" offsetX="0" offsetY="0" frameAnnotationDistance="1.5" unit="0" uuid="{79b123ab-4dd9-47b9-b5d7-f5288c1493af}" crossLength="1.5">
     <lineStyle>
@@ -80,7 +80,7 @@
      </symbol>
     </lineStyle>
    </ComposerMapGrid>
-   
+
    <ComposerItem pagey="17" page="1" id="Main Map" lastValidViewScaleFactor="3" positionMode="0" positionLock="false" x="10" y="14.9339" visibility="1" zValue="1" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="190" outlineWidth="0.3" excludeFromExports="0" uuid="{7e1e7ddf-38fd-4606-989f-0d4f2fdf64a8}" height="226" itemRotation="0" frame="true" pagex="10">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
@@ -114,7 +114,7 @@
     <BackgroundColor alpha="255" red="193" blue="255" green="232"/>
    </ComposerItem>
   </ComposerMap>
- 
+
 <!--Legend-->
   <ComposerLegend symbolWidth="3" title="Legend" boxSpace="2" splitLayer="1" equalColumnWidth="1" map="0" titleAlignment="1" symbolHeight="3" wmsLegendHeight="5" wrapChar="" fontColor="#000000" columnSpace="2" wmsLegendWidth="20" columnCount="1">
    <styles>
@@ -133,7 +133,7 @@
    </ComposerItem>
   </ComposerLegend>
 
-<!--North Arrow-->  
+<!--North Arrow-->
    <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="5.15939" file="arcgis_north_arrow.png" pictureHeight="13.2292" mapId="-1" anchorPoint="1">
    <ComposerItem pagey="254" page="1" id="North Arrow" lastValidViewScaleFactor="2.81208" positionMode="1" positionLock="false" x="103.25" y="254" visibility="1" zValue="5" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="3.5" outlineWidth="0" excludeFromExports="0" uuid="{73568d81-aef4-44c8-9bb0-c967b2fa6ec8}" height="12.877" itemRotation="0" frame="true" pagex="103.25">
     <FrameColor alpha="0" red="255" blue="255" green="255"/>
@@ -225,14 +225,14 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
-  
+
 <!--Department Logo-->
-  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="39.8302" file="DPAW_rgb.jpg" pictureHeight="9.58511" mapId="-1" anchorPoint="4">
+  <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="39.8302" file="ymac_logo.jpg" pictureHeight="9.58511" mapId="-1" anchorPoint="4">
    <ComposerItem pagey="263" page="1" id="Department Logo" lastValidViewScaleFactor="2.63354" positionMode="1" positionLock="false" x="163.085" y="263" visibility="1" zValue="4" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="39.8302" outlineWidth="0.3" excludeFromExports="0" uuid="{949dac1c-669a-429c-939c-c055618f59a1}" height="12.2518" itemRotation="0" frame="false" pagex="163.085">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
     <dataDefinedSource expr="" field="" active="false" useExpr="true"/>
    </ComposerItem>
-  </ComposerPicture>  
+  </ComposerPicture>
  </Composition>
 </Composer>
