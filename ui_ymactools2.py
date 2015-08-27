@@ -40,6 +40,5 @@ class Ui_YMACTools2(object):
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), YMACTools2.reject)
         QtCore.QMetaObject.connectSlotsByName(YMACTools2)
 
-    #TODO: Change this here
     def retranslateUi(self, YMACTools2):
         YMACTools2.setWindowTitle(_translate("YMACTools2", "YMACTools2", None))

@@ -132,15 +132,21 @@ class DockableWindow():
 
 
     # YMAC QGIS Home Page
-            dqhp = toolsMenu.addAction("YMAC QGIS Home Page")
-            dqhp.triggered.connect(DockableWindow.QGISWebpage)
+            dqhp = toolsMenu.addAction("YMAC Spatial Server")
+            dqhp.triggered.connect(DockableWindow.YMACGISWebpage)
 
     # YMAC's QGIS Quick-Start will be accessed through the YMAC QGIS Home Page
-            '''
-    # QGIS Quick-Start
+
             qqs = toolsMenu.addAction("QGIS Quick-Start")
             qqs.triggered.connect(DockableWindow.QGISQuickStart)
-            '''
+    
+    #Basic QGIS training 
+            gqs = toolsMenu.addAction("QGIS Training")
+            gqs.triggered.connect(DockableWindow.QGISTraining)
+    
+    #Basic GIS training
+            gis = toolsMenu.addAction("Introduction to GIS")
+            gis.triggered.connect(DockableWindow.GISQuickStart)
 
     # About info
             adb = toolsMenu.addAction("About")
@@ -164,15 +170,17 @@ class DockableWindow():
             toolbar.addAction(mapProButton)
 
 # REGION SELECTOR
-            regionComboBox = QComboBox(toolbar)
-            regionComboBox.setToolTip("YMAC Region selector")
-            topLayout.addWidget(regionComboBox)
-            target = Tools.getRegion()
-            for r in Tools.regions:
-                regionComboBox.addItem(r.replace("_", " "), None)
-                if r == target:
-                    regionComboBox.setCurrentIndex(regionComboBox.count() - 1)
-            regionComboBox.currentIndexChanged.connect(DockableWindow.regionChange)
+            #===================================================================
+            # regionComboBox = QComboBox(toolbar)
+            # regionComboBox.setToolTip("YMAC Region selector")
+            # topLayout.addWidget(regionComboBox)
+            # target = Tools.getRegion()
+            # for r in Tools.regions:
+            #     regionComboBox.addItem(r.replace("_", " "), None)
+            #     if r == target:
+            #         regionComboBox.setCurrentIndex(regionComboBox.count() - 1)
+            # regionComboBox.currentIndexChanged.connect(DockableWindow.regionChange)
+            #===================================================================
 
 # SEARCH CDDP
             searchbar = QMenuBar(dock)
@@ -232,7 +240,16 @@ class DockableWindow():
 ##############################################################################
     @staticmethod
     def QGISQuickStart():
-        QDesktopServices.openUrl(QUrl("http://intranet/csd/gis/Documents/QGIS%20Quick%20Start.pdf"))
+        QDesktopServices.openUrl(QUrl("http://docs.qgis.org/2.8/en/docs/user_manual/"))
+##############################################################################
+    @staticmethod
+    def QGISTraining():
+        QDesktopServices.openUrl(QUrl("http://docs.qgis.org/2.8/en/docs/training_manual/"))
+
+##############################################################################
+    @staticmethod
+    def GISQuickStart():
+        QDesktopServices.openUrl(QUrl("http://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/"))
 
 ##############################################################################
     @staticmethod

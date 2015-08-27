@@ -57,7 +57,6 @@ class YMACTools2:
 
         # Check whether this user has a .qgis2 folder containing project_default.qgs
         userProjDefaultLocation = "C:/Users/" + Tools.username + "/.qgis2/project_default.qgs"
-        #TODO: Change this to YMAC default project
         pluginProjDefaultLocation = path.dirname(__file__) + "/resources/project_default_YMAC.qgs"
         if not path.exists(userProjDefaultLocation):
             shutil.copyfile(pluginProjDefaultLocation, userProjDefaultLocation)
@@ -138,7 +137,7 @@ class YMACTools2:
         for drive in mappedDrives:
             if drive.Name == "V:":
                 Tools.corporateDataDrive = drive.ProviderName
-    #TODO:
+                
     def initGui(self):
         # Create action that will start plugin configuration
         self.action = QAction(

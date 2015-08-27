@@ -489,17 +489,18 @@ class MapProduction(QObject):
                 legend = item
 
         if len(maps) == 2:
+            global mainMap
             if maps[0].boundingRect().width() > maps[1].boundingRect().width():
                 mainMap = maps[0]
                 localityMap = maps[1]
             else:
                 mainMap = maps[1]
                 localityMap = maps[0]
-            global mainMap
+
 
         elif len(maps) > 0:
-                mainMap = maps[0]
-                global mainMap
+            global mainMap
+            mainMap = maps[0]
         else:
             Tools.debug("There is no map in this composer; map production tool will be closed.")
             return
@@ -540,6 +541,7 @@ class MapProduction(QObject):
             newYmin = 0.5*(yMin*(1 + mapRatio/canvasRatio) + yMax*(1 - mapRatio/canvasRatio))
             newYmax = 0.5*(yMin*(1 - mapRatio/canvasRatio) + yMax*(1 + mapRatio/canvasRatio))
         newExtent = QgsRectangle(newXmin, newYmin, newXmax, newYmax)
+        #This doesn't appear to be working 
         mainMap.setNewExtent(newExtent)
 
         # set to appropriate well known scale
@@ -571,6 +573,8 @@ class MapProduction(QObject):
                 paper = item
             elif type(item) == QgsComposerPicture:
                 images.append(item)
+            #NOTE: This is a little silly as it constantly applies
+            #      the same text replaces ineficiently
             elif type(item) == QgsComposerLabel:
                 text = item.text()
                 text = text.replace("%T%", title)
@@ -613,9 +617,9 @@ class MapProduction(QObject):
 
         # reallocate picture source
         for image in images:
-            pictureFile = str(image.pictureFile()).rsplit("\\", 1)[-1].rsplit("/", 1)[-1]
+            pictureFile = str(image.picturePath()).rsplit("\\", 1)[-1].rsplit("/", 1)[-1]
             pictureLocation = Tools.getPluginPath() + "resources\\logos\\" + pictureFile
-            image.setPictureFile(pictureLocation)
+            image.setPicturePath(pictureLocation)
 
         # UPDATE SCALE BARS, LOCALITY MAP AND GRID(S)
         # First get CRS of canvas and determine if it is projected or geographic
@@ -727,13 +731,36 @@ class MapProduction(QObject):
                 QgsMapLayerRegistry.instance().addMapLayer(towns)
                 dataLegend.moveLayer(towns, localityLayers)
                 dataLegend.setLayerVisible(towns, False)
-                #palyr = QgsPalLayerSettings()
-                #palyr.readFromLayer(towns)
-                #palyr.enabled = True
-                #palyr.fieldName = 'Name'
-                #palyr.writeToLayer(towns)
+                palyr = QgsPalLayerSettings()
+                palyr.readFromLayer(towns)
+                palyr.enabled = True
+                palyr.fieldName = 'Name'
+                palyr.writeToLayer(towns)
                 townsQml = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/towns_style.qml"
                 towns.loadNamedStyle(townsQml)
+
+            #LGA layer with labels
+            #TODO: MAYBE we should add smaller localaties or something
+            # It's just going to be easier to actually find appropriate data sets for these
+            lgas = LoadShapefile.loadShapefile(r"\NonCustodial\Admin\AdminAreas\LGA.shp", "__LAYER3")
+            if lgas is not None:
+                QgsMapLayerRegistry.instance().addMapLayer(lgas)
+                dataLegend.moveLayer(lgas, localityLayers)
+                dataLegend.setLayerVisible(lgas, False)
+                lgaQml = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/lga_style.qml"
+                lgas.loadNamedStyle(lgaQml)
+
+            # Localities layer with labels
+            localities = LoadShapefile.loadShapefile(r"\NonCustodial\Admin\AdminAreas\PostalLocality.shp", "__LAYER4")
+            if localities is not None:
+                QgsMapLayerRegistry.instance().addMapLayer(localities)
+                dataLegend.moveLayer(localities, localityLayers)
+                dataLegend.setLayerVisible(localities, False)
+                palyr = QgsPalLayerSettings()
+                palyr.readFromLayer(localities)
+                palyr.enabled = True
+                palyr.fieldName = 'NAME'
+                palyr.writeToLayer(localities)
 
         # Centroid layer - always added even if locality layers have alread been created (centroid may be in different place)
         if centroidLayer is not None:
@@ -846,12 +873,14 @@ class MapProduction(QObject):
 
         # CHOICE OF LOCALITY MAP LAYERS WILL VARY WITH LOCATION (IN OR OUT OF SW CORNER) AND SIZE OF AREA COVERED BY LOCALITY MAP
         # Get approx area of locality map in sqm - locMapArea already holds this if CRS is in metres.  If CRS is geographic:
+        # Note this was changed to MGA 50 as no sure why using SW
         if mapCRS.geographicFlag() == True:
-            mga51 = QgsCoordinateReferenceSystem(28351)     # MGA 51 used as a convenient proxy
+            mga51 = QgsCoordinateReferenceSystem(28350)     # MGA 50 used as a convenient proxy
             xform = QgsCoordinateTransform(mapCRS, mga51)
             projectedExtent = QgsRectangle(xform.transform(localityMap.extent()))
             locMapArea = projectedExtent.height() * projectedExtent.width()
         visibleLayers = []
+        #NOTE: TODO no entirely sure about this I think these are lat long and could do with a change
         if centroid.x() < 119 and centroid.y() < -30:   # i.e. in SW section (larger than SW region)        NB could change these to 'Constants'
             # List layers to be made visible (excluding centroid layer at this stage)
             if locMapArea <= 5*10**7:
@@ -881,6 +910,51 @@ class MapProduction(QObject):
         # RESIZE LOCALITY MAP IF NOT ENOUGH CONTEXT (I.E. TOO FEW BORDERS BETWEEN REGIONS / LGAS / LOCALITIES ARE DISPLAYED
         #TODO: Currently not using any of this
         request = QgsFeatureRequest()
+        for layer in layers:
+            if layer.name() == "__LAYER2":  # Reset region labels
+                palyr = QgsPalLayerSettings()
+                palyr.readFromLayer(layer)
+                palyr.enabled = True
+                palyr.writeToLayer(layer)
+            if layer.name() == visibleLayers[1]:
+                count = 0
+                layerCRS = layer.crs()
+                locMapExtent = localityMap.extent()
+                j = 0   # Loop counter
+                while count < 4:     # i.e. if < 4 polys show in locality map
+                    xform = QgsCoordinateTransform(mapCRS, layerCRS)
+                    filterRectangle = QgsRectangle(xform.transform(locMapExtent))
+                    request.setFilterRect(filterRectangle)
+                    i = 0
+                    for f in layer.getFeatures(request):
+                        i += 1
+                        #if i >= 3:
+                            #break
+                    count = i
+                    if count < 4:
+                        locMapExtent.scale(1.4)   # Will approximately double the area covered by locality map
+                    elif count > 5 and layer.name() == "__LAYER2":  # Tweak to switch off region labels when most or all of WA showing
+                        palyr = QgsPalLayerSettings()
+                        palyr.readFromLayer(layer)
+                        palyr.enabled = False
+                        palyr.writeToLayer(layer)
+                    j += 1
+                if j > 1:
+                    localityMap.setNewExtent(locMapExtent)
+                    # THIS MAY CAUSE BOX SHOWING MAIN MAP AREA TO DIMINISH TO INVISIBILITY - IF SO SWITCH ON CENTROID LAYER TO INDICATE LOCATION.
+                    locMapArea = locMapExtent.width() * locMapExtent.height()
+                    if locMapArea / mainMapArea > 400:
+                        #add cross at centroid
+                        for layer in layers:
+                            if layer.name() == "__LAYER5":
+                                qgis.utils.iface.legendInterface().setLayerVisible(layer, True)
+                                layerSet2 = []
+                                layerSet2.append(layer.id())    # Need this (point) as the FIRST layer in the list
+                                for oldLayer in layerSet:
+                                    layerSet2.append(oldLayer)
+                                localityMap.setKeepLayerSet(False)
+                                localityMap.setLayerSet(layerSet2)
+                                localityMap.setKeepLayerSet(True)
 
         # ENSURE WA BOUNDARIES ARE NOT TOO FAR FROM EDGE OF MAP - IF NEED BE, PAN MAP
         # Specify min & max Lat/Long - do not want locality map to extend beyond these.

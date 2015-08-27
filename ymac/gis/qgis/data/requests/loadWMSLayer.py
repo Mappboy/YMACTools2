@@ -34,6 +34,7 @@ class LoadWMSLayer():
         self.password = ""
         self.encrypted = ""
         self.title = ""
+        self.crs = None
         self.nametimestamp = None
         self.expiry = None
 
@@ -89,10 +90,16 @@ class LoadWMSLayer():
 
         connectionString = ""
 
-        if (self.user is not None and len(self.user) > 0) and (self.encrypted is None or len(self.encrypted) == 0):
+        if (self.user is not None and len(self.user) > 0) and (self.encrypted is None or len(self.encrypted) == 0) and not CRS:
             connectionString = ("url=" + self.url + "&username=" + self.user +
                                 "&password=" + self.password +
                                 '&crs=EPSG:4283&format=image/png&styles=&layers=' +
+                                self.layername)
+        elif CRS:
+            connectionString = ("url=" + self.url + "&username=" + self.user +
+                                "&password=" + self.password +
+                                '&crs=' + self.CRS +
+                                '&format=image/png&styles=&layers=' +
                                 self.layername)
         else:
             connectionString = self.url
@@ -144,6 +151,7 @@ class LoadWMSLayer():
         loadWMSLayer.searchstring = Tools.getAttributeFromElement(XMLMenuElement, "searchstring")
         loadWMSLayer.layername = Tools.getAttributeFromElement(XMLMenuElement, "layername")
         loadWMSLayer.user = Tools.getAttributeFromElement(XMLMenuElement, "user")
+        loadWMSLayer.crs = Tools.getAttributeFromElement(XMLMenuElement, "crs")
         loadWMSLayer.password = Tools.getAttributeFromElement(XMLMenuElement, "password")
         loadWMSLayer.encrypted = Tools.getAttributeFromElement(XMLMenuElement, "encrypted")
 

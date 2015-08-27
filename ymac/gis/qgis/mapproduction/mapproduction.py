@@ -614,7 +614,7 @@ class MapProduction(QObject):
 
         # reallocate picture source
         for image in images:
-            pictureFile = str(image.picturePAth()).rsplit("\\", 1)[-1].rsplit("/", 1)[-1]
+            pictureFile = str(image.picturePath()).rsplit("\\", 1)[-1].rsplit("/", 1)[-1]
             pictureLocation = Tools.getPluginPath() + "resources\\logos\\" + pictureFile
             image.setPicturePath(pictureLocation)
 
@@ -663,7 +663,7 @@ class MapProduction(QObject):
         if localityMap is not None and locMapReqd == True:
             localityMap.setPreviewMode(QgsComposerMap.Render)
             localityMap.updateItem()
-        canvas.freeze(False)
+        #canvas.freeze(False)
 
     @staticmethod
     def createLocalityMap(self, cv, localityMap, mainMap):
@@ -728,11 +728,11 @@ class MapProduction(QObject):
                 QgsMapLayerRegistry.instance().addMapLayer(towns)
                 dataLegend.moveLayer(towns, localityLayers)
                 dataLegend.setLayerVisible(towns, False)
-                #palyr = QgsPalLayerSettings()
-                #palyr.readFromLayer(towns)
-                #palyr.enabled = True
-                #palyr.fieldName = 'Name'
-                #palyr.writeToLayer(towns)
+                palyr = QgsPalLayerSettings()
+                palyr.readFromLayer(towns)
+                palyr.enabled = True
+                palyr.fieldName = 'Name'
+                palyr.writeToLayer(towns)
                 townsQml = os.path.normpath(self.ymacTools2Folder) + r"/resources/composer_templates/towns_style.qml"
                 towns.loadNamedStyle(townsQml)
 
